@@ -35,3 +35,25 @@ export const getAnimeDetails = async (id) => {
         return null;
     }
 };
+
+export const fetchUpcomingAnime = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/seasons/upcoming?limit=6`);
+        const data = await response.json();
+        return data.data;
+    } catch (error) {
+        console.error("Error fetching upcoming anime:", error);
+        return [];
+    }
+};
+
+export const fetchCriticallyAcclaimed = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/top/anime?filter=favorite&limit=8`);
+        const data = await response.json();
+        return data.data;
+    } catch (error) {
+        console.error("Error fetching acclaimed anime:", error);
+        return [];
+    }
+};
