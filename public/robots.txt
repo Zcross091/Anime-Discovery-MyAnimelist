@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Zcross091.github.io/Anime-Discovery-MyAnimelist/sitemap.xml

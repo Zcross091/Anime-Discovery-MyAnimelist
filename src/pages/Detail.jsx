@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getAnimeDetails } from '../api';
 import { Play, ArrowLeft, ExternalLink } from 'lucide-react';
 
@@ -24,8 +25,20 @@ export default function Detail() {
   // Filter streaming links specifically for legal platforms
   const streamLinks = anime.streaming || [];
   
+  const pageTitle = `${anime.title_english || anime.title} - Where to Watch Legally`;
+  const metaDesc = anime.synopsis ? anime.synopsis.substring(0, 150) + '...' : `Find out where to watch ${anime.title} legally on Anime Discovery.`;
+  
   return (
     <div className="animate-fade-in">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={metaDesc} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={metaDesc} />
+        <meta property="og:image" content={anime.images.webp.large_image_url} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
         <ArrowLeft size={20} /> Back to Discover
       </Link>

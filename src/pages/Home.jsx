@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { fetchTrendingAnime, searchAnime } from '../api';
 import { Star } from 'lucide-react';
 
@@ -36,6 +37,12 @@ export default function Home() {
 
   return (
     <div className="animate-fade-in">
+      <Helmet>
+        <title>{query ? `Search: ${query} - Anime Discovery` : 'Trending Anime - Anime Discovery'}</title>
+        <meta name="description" content="Discover, track, and find official legal streaming links for thousands of anime series." />
+        <meta name="keywords" content="anime, stream anime legally, anime discovery, anime tracking, watch anime" />
+      </Helmet>
+
       <h2 style={{ marginBottom: '2rem', fontSize: '2rem' }}>
         {query ? `Search Results for "${query}"` : 'Trending Now'}
       </h2>
