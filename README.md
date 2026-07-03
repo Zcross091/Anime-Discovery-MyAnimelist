@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/MyAnimeList_Logo.png/800px-MyAnimeList_Logo.png" alt="MAL Logo" width="200"/>
+  <img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/MyAnimeList_Logo.png/800px-MyAnimeList_Logo.png](https://static.vecteezy.com/system/resources/previews/029/171/931/large_2x/mal-letter-logo-design-inspiration-for-a-unique-identity-modern-elegance-and-creative-design-watermark-your-success-with-the-striking-this-logo-vector.jpg)" alt="MAL Logo" width="200"/>
   <h1>🌟 Anime Discovery & Explorer</h1>
   <p><strong>A cinematic, blazing-fast anime encyclopedia built for the Web and Discord.</strong></p>
   
