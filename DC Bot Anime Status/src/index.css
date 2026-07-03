@@ -1,0 +1,415 @@
+:root {
+  --discord-bg: #000000;
+  --discord-sidebar: #0e0e0e;
+  --discord-text: #ffffff;
+  --discord-text-muted: #a0a0a0;
+  --discord-orange: #F47521;
+  --discord-orange-hover: #ff8c3d;
+  --card-bg: #1c1c1c;
+  --card-hover: #2a2a2a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: var(--discord-bg);
+  color: var(--discord-text);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar for Carousels */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--discord-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--discord-orange);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--discord-orange);
+}
+
+.hero-gradient {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-synopsis {
+  font-size: 1.1rem;
+  color: var(--discord-text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.search-container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(14, 14, 14, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #222;
+}
+
+.search-input {
+  flex: 1;
+  background-color: var(--card-bg);
+  border: 1px solid #333;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--discord-orange);
+  box-shadow: 0 0 10px rgba(244, 117, 33, 0.2);
+}
+
+.search-button {
+  background-color: var(--discord-orange);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: var(--discord-orange-hover);
+  transform: translateY(-2px);
+}
+
+.carousel-section {
+  padding: 2rem;
+}
+
+.carousel-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--discord-orange);
+  padding-left: 0.8rem;
+}
+
+.carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.anime-card {
+  min-width: 200px;
+  max-width: 200px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.anime-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.anime-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.anime-card-title {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.anime-card-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  border-radius: 8px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+  text-align: center;
+}
+
+.anime-card:hover .anime-card-overlay {
+  opacity: 1;
+}
+
+.score-badge {
+  background: var(--discord-orange);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: var(--discord-sidebar);
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--discord-orange);
+}
+
+.modal-header {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-bottom: 1px solid #333;
+}
+
+.modal-poster {
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.modal-info h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--discord-orange);
+}
+
+.modal-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--discord-text-muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.modal-meta span {
+  background: #222;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+}
+
+.modal-synopsis {
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .modal-header {
+    flex-direction: column;
+  }
+  .modal-poster {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+}
+
+.video-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  position: relative;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.anime-card {
+  background-color: #2f3136;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.anime-card:hover {
+  transform: translateY(-2px);
+  background-color: #393c43;
+}
+
+.anime-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.anime-ep {
+  color: #b9bbbe;
+  font-size: 0.9rem;
+}
+
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 20;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.status-message {
+  text-align: center;
+  margin-top: 2rem;
+  color: #b9bbbe;
+  font-size: 1.2rem;
+}
+
+.error-message {
+  color: #ed4245;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #2f3136; 
+}
+::-webkit-scrollbar-thumb {
+  background: #202225; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #18191c; 
+}
