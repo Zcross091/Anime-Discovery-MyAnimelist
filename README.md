@@ -2,6 +2,10 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/MyAnimeList_Logo.png/800px-MyAnimeList_Logo.png" alt="MAL Logo" width="200"/>
   <h1>🌟 Anime Discovery & Explorer</h1>
   <p><strong>A cinematic, blazing-fast anime encyclopedia built for the Web and Discord.</strong></p>
+  
+  <a href="https://discord.com/oauth2/authorize?client_id=1520782050259374262&permissions=3146240&integration_type=0&scope=bot+applications.commands">
+    <img src="https://img.shields.io/badge/Add_to_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Invite to Discord"/>
+  </a>
 </div>
 
 ---
